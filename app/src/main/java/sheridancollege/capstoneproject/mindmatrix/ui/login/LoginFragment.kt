@@ -1,5 +1,6 @@
 package sheridancollege.capstoneproject.mindmatrix.ui.login
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -39,6 +40,10 @@ class LoginFragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
+            val fadeIn = ObjectAnimator.ofFloat(view, "alpha", 0f, 1f)
+            fadeIn.duration = 1000
+            fadeIn.start()
         }
     }
 
