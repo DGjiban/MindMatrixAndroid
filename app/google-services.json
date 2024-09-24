@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "582503503384",
+    "project_id": "mindmatrix-b1530",
+    "storage_bucket": "mindmatrix-b1530.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582503503384:android:46a64b82ab4e95d9dd556d",
+        "android_client_info": {
+          "package_name": "sheridancollege.capstoneproject.mindmatrix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkx4DWC_PilTNIqAPMZ4mzOjjNCuZlrk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
