@@ -22,9 +22,6 @@ class RankingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val rankingViewModel =
-            ViewModelProvider(this).get(RankingViewModel::class.java)
-
         _binding = FragmentRankingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
