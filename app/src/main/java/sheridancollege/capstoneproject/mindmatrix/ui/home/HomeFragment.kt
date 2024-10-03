@@ -24,8 +24,6 @@ class HomeFragment : Fragment() {
 
     val db = FirebaseFirestore.getInstance()
 
-    var quizList: Int = 0
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,7 +36,7 @@ class HomeFragment : Fragment() {
         val email = currentUser?.email
 
         if (email != null) {
-
+            var quizList = 0
             db.collection("quizzes").get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
