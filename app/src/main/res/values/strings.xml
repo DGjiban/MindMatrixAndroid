@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Mind Matrix</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Ranking</string>
-    <string name="title_notifications">Profile</string>
+    <string name="title_ranking">Ranking</string>
+    <string name="title_profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
 </resources>

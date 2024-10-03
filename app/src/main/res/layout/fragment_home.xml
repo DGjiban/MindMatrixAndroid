@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="364dp"
         android:layout_height="86dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="4dp"
         android:text="Mind Matrix"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -20,8 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtWelcome"
@@ -40,24 +39,24 @@
         android:id="@+id/btLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="128dp"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
 
     <Button
         android:id="@+id/btStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="175dp"
+        android:layout_height="65dp"
         android:layout_marginTop="164dp"
         android:text="Start Challange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btLogout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.143" />
 
     <TextView
         android:id="@+id/txtRank"
@@ -66,7 +65,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="31dp"
-        android:text="TextView"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btLogout"
@@ -80,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="31dp"
-        android:text="Current Rank: "
+        android:text="Current Points: "
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -90,5 +88,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtWelcome"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Current Challenge:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btLogout" />
+
+    <TextView
+        android:id="@+id/txtChallengeN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
