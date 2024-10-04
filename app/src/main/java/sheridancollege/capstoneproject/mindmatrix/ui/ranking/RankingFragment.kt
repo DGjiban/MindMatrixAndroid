@@ -39,19 +39,28 @@ class RankingFragment : Fragment() {
     // Fetch and display rank data
     private fun fetchAndDisplayRank() {
         db.collection("users")
-            .orderBy("points", com.google.firebase.firestore.Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { documents ->
                 userList.clear() // Clear the list to avoid duplicates
 
-                var rank = 1
-                for (document in documents) {
+                // Loop through documents and create a User list
+                for ((index, document) in documents.withIndex()) {
                     val name = document.getString("name") ?: "Unknown"
-                    val userPoints = document.getString("points")
+                    val email = document.getString("email") ?: "Unknown"
+                    val birth = document.getString("birth") ?: "Unknown"
+                    val userPointsStr = document.getString("points") ?: "0" // Get points as a string
+                    val userPoints = userPointsStr.toIntOrNull() ?: 0 // Convert points to an integer
 
-                    // Assign rank based on original list position
-                    userList.add(User(name, userPoints, rank))
-                    rank++ // Increment rank for the next user
+                    // Assign rank based on the index position (starting from 1)
+                    userList.add(User(name, email, birth, userPoints,0),) // Rank will be assigned later
+                }
+
+                // Sort userList by points in descending order
+                userList.sortByDescending { it.points }
+
+                // After sorting, assign rank based on list position
+                for ((rank, user) in userList.withIndex()) {
+                    user.rank = rank + 1 // Assign the rank
                 }
 
                 // Now display the rank

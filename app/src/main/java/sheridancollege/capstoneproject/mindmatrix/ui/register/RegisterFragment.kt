@@ -94,9 +94,7 @@ class RegisterFragment : Fragment() {
             user["name"] = name
             user["email"] = email
             user["birth"] = ""
-            user["status"] = ""
-            user["rank"] = ""
-            user["title"] = ""
+            user["points"] = "0"
 
             firebaseFirestore.collection("users").document(email)
                 .set(user)
