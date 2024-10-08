@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import sheridancollege.capstoneproject.mindmatrix.MainActivity
 import sheridancollege.capstoneproject.mindmatrix.R
 import sheridancollege.capstoneproject.mindmatrix.databinding.FragmentLoginBinding
+import sheridancollege.capstoneproject.mindmatrix.forgetPwd
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,6 +61,11 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         firebaseAuth = FirebaseAuth.getInstance()
+
+        binding.txtForgetPWD.setOnClickListener {
+            val intent = Intent(requireActivity(), forgetPwd::class.java)
+            startActivity(intent)
+        }
 
         binding.btLogin.setOnClickListener {
             val email = binding.tfEmailLogin.text.toString().trim()
