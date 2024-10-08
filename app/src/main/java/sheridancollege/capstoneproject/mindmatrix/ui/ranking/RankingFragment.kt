@@ -18,7 +18,7 @@ class RankingFragment : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
     private var userList = mutableListOf<User>() // Store the complete list of users
-    private lateinit var rankAdapter: RankAdapter
+    private var rankAdapter: RankAdapter? = null // Make rankAdapter nullable to handle initialization
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +52,7 @@ class RankingFragment : Fragment() {
                     val userPoints = userPointsStr.toIntOrNull() ?: 0 // Convert points to an integer
 
                     // Assign rank based on the index position (starting from 1)
-                    userList.add(User(name, email, birth, userPoints,0),) // Rank will be assigned later
+                    userList.add(User(name, email, birth, userPoints, 0)) // Rank will be assigned later
                 }
 
                 // Sort userList by points in descending order
@@ -63,7 +63,7 @@ class RankingFragment : Fragment() {
                     user.rank = rank + 1 // Assign the rank
                 }
 
-                // Now display the rank
+                // Initialize and display the rank adapter after fetching data
                 displayRank(userList)
             }
             .addOnFailureListener { exception ->
@@ -73,7 +73,7 @@ class RankingFragment : Fragment() {
 
     // Set up and display the rank in the RecyclerView
     private fun displayRank(userList: List<User>) {
-        rankAdapter = RankAdapter(userList)
+        rankAdapter = RankAdapter(userList) // Initialize the adapter here
         binding.rvRank.layoutManager = LinearLayoutManager(requireContext())
         binding.rvRank.adapter = rankAdapter
     }
@@ -86,8 +86,10 @@ class RankingFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Filter the list based on user input
-                filterRankList(newText)
+                // Check if rankAdapter is initialized before filtering
+                if (rankAdapter != null) {
+                    filterRankList(newText)
+                }
                 return true
             }
         })
@@ -104,11 +106,11 @@ class RankingFragment : Fragment() {
         }
 
         // Update the adapter with the filtered list
-        rankAdapter.updateList(filteredList)
+        rankAdapter?.updateList(filteredList)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        _binding = null // Properly nullify binding to avoid memory leaks
     }
 }
