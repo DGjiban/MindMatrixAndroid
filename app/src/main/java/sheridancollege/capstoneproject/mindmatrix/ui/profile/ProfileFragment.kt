@@ -1,6 +1,7 @@
 package sheridancollege.capstoneproject.mindmatrix.ui.profile
 
 import android.os.Bundle
+import android.text.InputFilter
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -52,9 +53,12 @@ class ProfileFragment : Fragment() {
     // Fetch user data from Firestore and pre-fill the fields
     private fun getuserdata(email: String?) {
         val tfName = binding.tfProfileName
-        val tfBirth = binding.tfBirth
         val tfEmail = binding.tfProfileEmail
         val tfPoints = binding.tfProfilePoints
+
+        // Limit the input to 8 characters for yyyyMMdd format
+        val tfBirth = binding.tfBirth
+        tfBirth.filters = arrayOf(InputFilter.LengthFilter(10))
 
         if (email != null) {
             db.collection("users").whereEqualTo("email", email).get()
@@ -82,7 +86,22 @@ class ProfileFragment : Fragment() {
     // Update the user profile in Firestore
     private fun updateProfile(email: String?) {
         val name = binding.tfProfileName.text.toString().trim()
-        val birth = binding.tfBirth.text.toString().trim()
+        var birth = binding.tfBirth.text.toString().trim()
+
+        // Ensure the date is exactly 8 characters long before formatting
+        if (birth.length == 8) {
+            // Convert yyyyMMdd to yyyy/MM/dd
+            val formattedDate =
+                birth.substring(0, 4) + "/" + birth.substring(4, 6) + "/" + birth.substring(6, 8)
+            birth = formattedDate
+        } else if (birth.length == 10) {
+            val parts = birth.split("/")
+            birth = parts[0] + "/" + parts[1] + "/" + parts[2]
+        }
+        else {
+            Toast.makeText(requireContext(), "Invalid date format", Toast.LENGTH_LONG)
+                .show()
+        }
 
         if (TextUtils.isEmpty(name) || TextUtils.isEmpty(birth)) {
             Toast.makeText(
