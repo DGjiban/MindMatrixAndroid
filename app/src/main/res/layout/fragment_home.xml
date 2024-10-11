@@ -51,7 +51,7 @@
         android:layout_width="175dp"
         android:layout_height="65dp"
         android:layout_marginTop="164dp"
-        android:text="Start Challange"
+        android:text="Start Challenge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
